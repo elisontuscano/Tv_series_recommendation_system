@@ -1,0 +1,69 @@
+[System]
+Name='TVPopularity'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Rating'
+Range=[0 10]
+NumMFs=5
+MF1='VeryLow':'gaussmf',[5.00265268493348 0]
+MF2='Low':'gaussmf',[1 6.50462427745665]
+MF3='Medium':'gaussmf',[0.75 7.5]
+MF4='HIgh':'gaussmf',[0.261761877601994 8.25]
+MF5='VeryHIgh':'gaussmf',[1.13467595012024 10]
+
+[Input2]
+Name='Vote'
+Range=[0 1200000]
+NumMFs=5
+MF1='Very_Low':'gaussmf',[2594.58973113767 211]
+MF2='Low':'gaussmf',[1978.0852009945 7040]
+MF3='High':'gauss2mf',[12800 55822.2933749033 16500 127000]
+MF4='Medium':'gauss2mf',[4680 15500 7693.8218693858 30924.8554913295]
+MF5='Very_HIgh':'sigmf',[9.71e-05 153381.502890173]
+
+[Output1]
+Name='Popularity'
+Range=[0 10]
+NumMFs=5
+MF1='VeryUnpopular':'trimf',[-2.5 -2.776e-17 2.5]
+MF2='Unpopular':'trimf',[0 2.5 5]
+MF3='ModeratelyPopular':'trimf',[2.5 5 7.5]
+MF4='Popular':'trimf',[5 7.5 10]
+MF5='VeryPopular':'trimf',[7.5 10 12.5]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (1) : 1
+1 4, 1 (1) : 1
+1 3, 2 (1) : 1
+1 5, 3 (1) : 1
+2 1, 1 (1) : 1
+2 2, 2 (1) : 1
+2 4, 2 (1) : 1
+2 3, 2 (1) : 1
+2 5, 3 (1) : 1
+3 1, 2 (1) : 1
+3 2, 2 (1) : 1
+3 4, 3 (1) : 1
+3 3, 3 (1) : 1
+3 5, 3 (1) : 1
+4 1, 2 (1) : 1
+4 2, 3 (1) : 1
+4 4, 4 (1) : 1
+4 3, 4 (1) : 1
+4 5, 5 (1) : 1
+5 1, 3 (1) : 1
+5 2, 4 (1) : 1
+5 4, 4 (1) : 1
+5 3, 5 (1) : 1
+5 5, 5 (1) : 1

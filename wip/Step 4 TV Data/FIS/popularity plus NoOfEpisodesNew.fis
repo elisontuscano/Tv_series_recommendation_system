@@ -1,0 +1,69 @@
+[System]
+Name='popularity plus NoOfEpisodesNew'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Popularity'
+Range=[0 10]
+NumMFs=5
+MF1='VU':'gaussmf',[1.062 -2.776e-17]
+MF2='U':'gaussmf',[1.062 2.5]
+MF3='M':'gaussmf',[1.062 5]
+MF4='P':'gaussmf',[1.062 7.5]
+MF5='VP':'gaussmf',[1.062 10]
+
+[Input2]
+Name='No_Of_Episodes'
+Range=[0 10000]
+NumMFs=5
+MF1='Very_Low':'gaussmf',[50 0]
+MF2='Low':'gaussmf',[50 100]
+MF3='Medium':'gaussmf',[92 222]
+MF4='High':'dsigmf',[0.03398 300 0.0368 640]
+MF5='Very_High':'sigmf',[0.0381 640]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=5
+MF1='VL':'trimf',[-0.25 0 0.25]
+MF2='L':'trimf',[0 0.25 0.5]
+MF3='M':'trimf',[0.25 0.5 0.75]
+MF4='H':'trimf',[0.5 0.75 1]
+MF5='VH':'trimf',[0.75 1 1.25]
+
+[Rules]
+1 1, 2 (1) : 1
+1 2, 2 (1) : 1
+1 3, 1 (1) : 1
+1 4, 1 (1) : 1
+1 5, 1 (1) : 1
+2 1, 2 (1) : 1
+2 2, 2 (1) : 1
+2 3, 2 (1) : 1
+2 4, 1 (1) : 1
+2 5, 1 (1) : 1
+3 1, 3 (1) : 1
+3 2, 3 (1) : 1
+3 3, 3 (1) : 1
+3 4, 2 (1) : 1
+3 5, 1 (1) : 1
+4 1, 4 (1) : 1
+4 2, 4 (1) : 1
+4 3, 4 (1) : 1
+4 4, 3 (1) : 1
+4 5, 3 (1) : 1
+5 1, 5 (1) : 1
+5 2, 5 (1) : 1
+5 3, 5 (1) : 1
+5 4, 4 (1) : 1
+5 5, 4 (1) : 1
